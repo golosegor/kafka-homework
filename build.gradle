@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+}
+
+group 'com.home.streaming'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.19.0'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testCompile 'org.junit.jupiter:junit-jupiter-engine'
+
+    compile group: 'io.github.microutils', name: 'kotlin-logging', version: '1.4.3'
+
+}
+
+test {
+    useJUnitPlatform()
+}
