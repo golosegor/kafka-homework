@@ -1,0 +1,22 @@
+kubeControllerManager:
+  enabled: false
+kubeScheduler:
+  enabled: false
+nodeExporter:
+  enabled: false
+
+prometheus:
+  persistence:
+    enabled: true
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 20Gi
+
+grafana:
+  persistence:
+    enabled: true

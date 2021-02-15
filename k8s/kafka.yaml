@@ -1,0 +1,7 @@
+externalAccess:
+  enabled: true
+  service:
+    type: LoadBalancer
+    port: 9094
+    loadBalancerIPs:
+      - 172.24.237.20
