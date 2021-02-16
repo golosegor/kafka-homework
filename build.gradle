@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'com.bmuschko.docker-java-application' version '4.10.0'
+    id 'application'
+    id "com.bmuschko.docker-java-application" version "6.7.0"
 }
 
 group 'com.home.streaming'
@@ -19,8 +20,7 @@ dependencies {
 }
 
 task buildFatJar(type: Jar) {
-    baseName = project.name + '-all'
-//    baseName = 'differnt_name'
+    baseName = 'differnt_name'
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -37,12 +37,12 @@ docker {
                 password = file(System.getenv('GOOGLE_APPLICATION_CREDENTIALS')).text
             }
         }
-        baseImage = 'openjdk:11-jdk'
-        maintainer = 'Grzegorz Kocur "grzegorz.kocur@softwaremill.com"'
-        tag = 'eu.gcr.io/kafka-streams-scaling/' + project.name.toLowerCase() + ':latest'
-        jvmArgs = [ "-Dcom.sun.management.jmxremote.port=5555",
-                    "-Dcom.sun.management.jmxremote.authenticate=false",
-                    "-Dcom.sun.management.jmxremote.ssl=false"]
+        mainClassName = 'com.home.streaming.App'
+        baseImage = 'openjdk:8'
+        maintainer = 'Egor Goloshchapov'
+        jvmArgs = ["-Dcom.sun.management.jmxremote.port=5555",
+                   "-Dcom.sun.management.jmxremote.authenticate=false",
+                   "-Dcom.sun.management.jmxremote.ssl=false"]
     }
 }
 
