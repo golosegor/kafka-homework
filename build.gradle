@@ -20,7 +20,7 @@ dependencies {
 }
 
 task buildFatJar(type: Jar) {
-    baseName = 'differnt_name'
+    baseName = 'streaming-fatjar'
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
