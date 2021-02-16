@@ -24,7 +24,7 @@ public class App {
     config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG,
       Optional.ofNullable(System.getenv("BOOTSTRAP_SERVERS_CONFIG")).orElse("localhost:9094")
     );
-    config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
+    config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
     config.put(StreamsConfig.COMMIT_INTERVAL_MS_CONFIG, 100);
     config.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 10);
 
